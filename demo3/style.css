@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+/*@media screen and (max-width: 400px) {}*/
+
+/*@media screen and (min-width: 401px) and (max-width: 800px) {}*/
+
+/* 반응형 함수 미디어 쿼리 */
+/* reset */
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;						/*부모의 색을 상속하겠다.*/
+}
+
+/* common */
+
+html {
+	font-size: 15px;
+	font-family: 'SpoqaHanSans', sans-serif;
+	color: #fff;
+}
+
+/* header */
+
+.header {
+	position: fixed;
+	width: 100%;
+	padding-top: 58px;
+	padding-left: 58px;
+	padding-right: 58px;
+}
+
+.header .logo {
+	font-size: 25px;
+	line-height: 25px;
+}
+
+.header .btn-gnb {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-image: url(img/gnb.svg);
+	background-size: contain;
+	text-indent: -9999px;
+}
+
+/* landing */
+
+.landing {
+	height: 100vh;
+	background-image: url(img/coding.png);
+	background-size: cover;
+}
+
+.landing-title, .landing-para {
+	margin-bottom: 21px;
+	text-align: center;					/*공통속성*/
+}
+
+.landing-title {
+	width: 52%;
+	/*margin-bottom: 21px;*/
+	font-size: 60px;
+	line-height: 68px;
+	/*text-align: center;*/
+}
+
+.landing-para {
+	width: 38%;
+	/*margin-bottom: 21px;*/
+	font-size: 20px;
+	line-height: 28px;
+	/*text-align: center;*/
+}
+
+.btn-landing {
+	display: inline-block;
+	padding: 21px 51.5px;
+	border-radius: 1000px;
+	background-image: linear-gradient(to bottom, #f06b3b, #ff4b1f);
+	background-size: 100% 100%;
+}
+
+/* 01. 전통적인 방법으로 정렬 */
+
+/* header */
+
+/*.header {
+	overflow: hidden;
+	z-index: 1;
+}
+
+.header .logo {
+	float: left;
+}
+
+.header .btn-gnb {
+	float: right;
+}*/
+
+/* landing */
+
+/*그런데 이제 보니 landing 안에 title, para, btn 기능을 모두 묶을 부모가 없네. 마크업을 다시 손봐야 하는 상황*/
+
+/*.landing {
+	position: relative;
+}
+
+.landing-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.landing-para {
+	margin-left: auto;
+	margin-right: auto;
+}
+*/
+
+/* 02. flexbox로 정렬 */
+
+.header {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.landing {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+@media screen and (max-width: 1150px) {
+	.landing-title {
+		width: 70%;
+	}
+	.landing-para {
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.header {
+		padding-top: 45px;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	.landing-title {
+		font-size: 48px;
+		line-height: 72px;
+	}
+}
